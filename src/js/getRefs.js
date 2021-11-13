@@ -4,6 +4,7 @@ export const getRefs = () => {
     locationTimezone: document.querySelector('.location-timezone'),
     temperatureDescription: document.querySelector('.temperature-description'),
     icon: document.querySelector('.icon'),
-    skycon: document.querySelector('#icon1')
+    skycon: document.querySelector('#icon1'),
+    body: document.querySelector('body')
   };
 };

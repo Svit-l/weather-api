@@ -1,6 +1,6 @@
 import { getRefs } from './getRefs';
 import { Skycons } from './skycons';
-
+import { getPosition } from './getposition';
 const refs = getRefs();
 
 if (navigator.geolocation) {
@@ -9,6 +9,7 @@ if (navigator.geolocation) {
     const long = position.coords.longitude;
     const lat = position.coords.latitude;
     getWeather(long, lat);
+    getPosition(lat, long);
   });
 }
 
