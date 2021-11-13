@@ -53,3 +53,20 @@ body {
   font-weight: 400;
   padding-top: 26 px;
 }
+.date {
+  width: 280px;
+  height: 190px;
+  border-radius: 35px;
+  background-color: rgba(16, 33, 54, 0.59);
+  color: white;
+  font-weight: 400;
+  padding-top: 26px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  &:hover {
+    transition: 200ms linear;
+    background-color: #102136;
+  }
+}
