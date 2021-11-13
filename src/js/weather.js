@@ -1,7 +1,7 @@
 import { getRefs } from './getRefs';
+import { Skycons } from './skycons';
 
 const refs = getRefs();
-console.log(refs.temperDegree);
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(position => {
@@ -29,10 +29,22 @@ function getWeather(long, lat) {
       refs.locationTimezone.textContent = name;
       refs.temperatureDescription.textContent = weather[0].main;
       refs.icon.src = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
-      console.log(weather);
-      console.log(weather[0].main);
-      console.log(weather[0].id);
+      setSkycon(weather[0].description);
     });
 }
 
 // `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+const updateIcons = {
+  'clear sky': 'CLEAR_DAY',
+  'few clouds': 'PARTLY_CLOUDY_DAY',
+}
+
+function setSkycon(icon) {
+  const skyconDescription = updateIcons[icon]
+  const skycons = new Skycons({ color: 'lightblue' });
+  skycons.set(refs.skycon, Skycons[skyconDescription]);
+  skycons.play();
+}
+
+// clear-day,clear-night,partly-cloudy-day,partly-cloudy-night,cloudy,rain,sleet,snow,wind,fog
+//'clear sky', 'few clouds','scattered clouds',"broken clouds","shower rain",'rain','thunderstorm','snow','mist'
