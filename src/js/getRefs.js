@@ -5,6 +5,7 @@ export const getRefs = () => {
     temperatureDescription: document.querySelector('.temperature-description'),
     icon: document.querySelector('.icon'),
     skycon: document.querySelector('#icon1'),
-    body: document.querySelector('body')
+    body: document.querySelector('body'),
+    searchForm: document.querySelector('.search-form'),
   };
 };
