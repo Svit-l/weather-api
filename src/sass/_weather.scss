@@ -7,6 +7,7 @@
 }
 body {
   background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
+  min-height: 100vh;
 }
 .container {
   height: 100vh;
@@ -69,4 +70,8 @@ body {
     transition: 200ms linear;
     background-color: #102136;
   }
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
 }

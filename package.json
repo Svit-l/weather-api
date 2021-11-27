@@ -26,6 +26,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
-    "date-fns": "^2.25.0"
+    "date-fns": "^2.25.0",
+    "tui-pagination": "^3.4.1"
   }
 }
