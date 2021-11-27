@@ -9,6 +9,7 @@ const options = {
   visiblePages: 5,
   page: 1,
 };
+
 const pagination = new Pagination(container, options);
 const page = pagination.getCurrentPage();
 console.log(page);
@@ -31,16 +32,19 @@ function fetchGallery(page) {
 fetchGallery(page)
   .then(({ images, total }) => {
     renderImages(images);
+    const img = document.querySelectorAll('.gallery img');
+    console.log(img);
+    lasyLoad(img)
     pagination.reset(total);
   })
-  .then(scroll);
+ 
 
 function renderImages(images) {
   const markup = images
     .map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
       return `<li><div class="photo-card">
         <a class="gallery__item" href=${largeImageURL}>
-        <img src=${webformatURL} alt=${tags} loading="lazy" width="354" height="225" /></a>
+        <img src="" data-lasy="${webformatURL}" alt=${tags} loading="lazy" width="354" height="225" /></a>
         <div class="info">
             <p class="info-item">
                 <b>Likes </br><span class='text'>${likes}</span></b>
@@ -69,8 +73,10 @@ pagination.on('afterMove', ({ page }) => {
   fetchGallery(page)
     .then(({ images }) => {
       renderImages(images);
+      const img = document.querySelectorAll('.gallery img');
+      lasyLoad(img)
     })
-    .then(scroll);
+  
 });
 
 function scroll() {
@@ -78,4 +84,26 @@ function scroll() {
     top: document.documentElement.scrollHeight,
     behavior: 'smooth',
   });
+}
+
+
+function lasyLoad (targets) {
+  const option = {
+    rootMargin: "100px"
+  };
+  const onEntry = (entries, observer) => {
+    entries.forEach(entrie => {
+      if (entrie.isIntersecting) {
+        const image = entrie.target
+        console.log("image", image);
+        const src = image.dataset.lasy
+        image.src = src
+        observer.unobserve(image)
+      }
+    })
+  }
+
+  const io = new IntersectionObserver(onEntry, option)
+  targets.forEach(target => io.observe(target))
+
 }
