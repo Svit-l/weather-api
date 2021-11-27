@@ -95,6 +95,7 @@ function lasyLoad (targets) {
     entries.forEach(entrie => {
       if (entrie.isIntersecting) {
         const image = entrie.target
+        console.log("image", image);
         const src = image.dataset.lasy
         image.src = src
         observer.unobserve(image)
