@@ -63,6 +63,7 @@ const updateIcons = {
 
 function setSkycon(icon) {
   console.log(icon);
+  // skycons.remove(refs.skycon);
   const skyconDescription = updateIcons[icon]
   const skycons = new Skycons({ color: 'lightblue' });
   skycons.set(refs.skycon, Skycons[skyconDescription]);

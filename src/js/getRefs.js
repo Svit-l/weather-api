@@ -7,5 +7,10 @@ export const getRefs = () => {
     skycon: document.querySelector('#icon1'),
     body: document.querySelector('body'),
     searchForm: document.querySelector('.search-form'),
+    day: document.querySelector('.date__day'),
+    weekDay: document.querySelector('.day__week'),
+    month: document.querySelector('.date__month'),
+    time: document.querySelector('.date__time'),
+
   };
 };
